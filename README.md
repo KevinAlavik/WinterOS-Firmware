@@ -22,3 +22,19 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ## Protocol
 
 The protocol for the Frost64 firmware is documented in the [PROTOCOL.md](PROTOCOL.md) file.
+
+## Building & Running
+
+To build and run the firmware, you will need both the assembler and emulator installed in your `PATH`.
+
+### Building
+
+- run `make` to build the firmware
+
+### Running
+
+- run `make run` to build and run the firmware
+
+## Scripts
+
+The `scripts/` directory contains various scripts that were used to generate parts of the firmware. There is no guarantee that these scripts will work on your system, but they are provided for reference. They can be in a variety of different programming languages as they are not required to build or run the firmware.
