@@ -39,7 +39,7 @@ main:
     jnz .storage_read_error     ; Jump to storage read error if fails
 
     ; Jump to the bootloader code located at 0x10000
-    mov r0, WFPT                ; Provide pointer to the WFTP to the bootloader.
+    mov r0, WFPT                ; Provide pointer to the WFPT to the bootloader.
     jmp 0x10000
 
 .storage_init_error:

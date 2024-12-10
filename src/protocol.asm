@@ -9,7 +9,7 @@
 ; ============================================
 WFPT:
     ; To calculate the address of a function in the WFPT simply do:
-    ;  - address =  [WFTP_Base + (0x08 * idx)]
+    ;  - address =  [WFPT_Base + (0x08 * idx)]
 
     ; -- BEGIN --
     dq Console_Print        ; ProtocolTable[0] -> Print()
