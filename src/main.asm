@@ -30,6 +30,11 @@ main:
     cmp r0, 0
     jnz .storage_init_error     ; Jump to storage initialization error if fails
 
+    ; Initialize the video device
+    call Video_Init
+    cmp r0, 0
+    jnz .video_init_error       ; Jump to the video initialization error if fails
+
     ; Read the first 16 sectors from the storage device to memory at 0x10000
     mov r0, 0                   ; Sector 0
     mov r1, 16                  ; Read 16 sectors
@@ -52,6 +57,11 @@ main:
     mov r0, storage_read_error_msg
     jmp .print_error
 
+.video_init_error:
+    ; Error handling for video initialization failure
+    mov r0, video_init_error_msg
+    jmp .print_error
+
 .print_error:
     ; Print error message using the console
     call Console_Print
@@ -62,10 +72,13 @@ main:
 
 ; Error messages for storage initialization and read errors
 storage_init_error_msg:
-    asciiz "Failed to initialise storage device\n"
+    asciiz "Failed to initialize storage device\n"
 
 storage_read_error_msg:
     asciiz "Failed to read from storage device\n"
+
+video_init_error_msg:
+    asciiz "Failed to initialize video device\n"
 
 ; Include external assembly files for initialization
 %include "console.asm"
@@ -73,4 +86,5 @@ storage_read_error_msg:
 %include "IO.asm"
 %include "stack.asm"
 %include "storage.asm"
+%include "video.asm"
 %include "protocol.asm"
