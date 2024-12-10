@@ -78,7 +78,7 @@ Each device has a unique table which can get retrieved by calling the `DevGetFun
 
 ##### Device info table for a video device
 
-The remaining fields are expected to be as follows:
+The table is expected to contain the following fields:
 
 | Offset | Size | Name        | Description                                          |
 |--------|------|-------------|------------------------------------------------------|
@@ -108,6 +108,14 @@ The table for each mode is expected to be as follows:
 | 0x15   | 1    | GreenShift  | The green shift in each pixel             |
 | 0x16   | 1    | BlueShift   | The blue shift in each pixel              |
 | 0x17   | 1    | AlphaShift  | The alpha shift in each pixel             |
+
+#### Device info table for a console device
+
+The table is expected to contain the following fields:
+
+| Offset | Size | Name        | Description                                   |
+|--------|------|-------------|-----------------------------------------------|
+| 0x00   | 8    | PrintFunc   | The address of the function to print a string |
 
 #### Memory info table
 
