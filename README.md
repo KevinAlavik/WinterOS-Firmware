@@ -38,3 +38,7 @@ To build and run the firmware, you will need both the assembler and emulator ins
 ## Scripts
 
 The `scripts/` directory contains various scripts that were used to generate parts of the firmware. There is no guarantee that these scripts will work on your system, but they are provided for reference. They can be in a variety of different programming languages as they are not required to build or run the firmware.
+
+## Test bootloader
+
+The `test/` directory contains the test bootloader. The test bootloader is used to test the firmware and ensure that it is working correctly. It is not required to build the firmware, but is required to run the firmware.

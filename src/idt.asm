@@ -6,8 +6,7 @@ global_interrupt_handler:
     pusha
 
     mov r0, scp
-.l:
-    jmp .l
+    hlt ; for now, just halt
 
     popa
     sub scp, 0x18 ; remove error code and interrupt number

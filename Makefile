@@ -25,5 +25,12 @@ all: clean
 clean:
 	@rm -fr bin
 
-run: all
-	@$(EMU) -pbin/firmware.bin
+bootloader:
+	@$(ASM) -ptest/bootloader.asm -obin/bootloader.bin
+	@mkdir -p image
+	@dd if=/dev/zero of=image/disk.iso bs=1k count=8 &>/dev/null
+	@dd if=bin/bootloader.bin of=image/disk.iso conv=notrunc &>/dev/null
+
+
+run: all bootloader
+	$(EMU) -pbin/firmware.bin -Dimage/disk.iso
