@@ -1,3 +1,8 @@
+; *****************************************************
+; WinterOS Official Firmware
+; Forked version of the official firmware for WinterOS
+; *****************************************************
+
 %define CONSOLE_DEVICE_LOCATION 0xE0000000
 
 /* Console_Init

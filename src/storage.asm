@@ -1,3 +1,8 @@
+; *****************************************************
+; WinterOS Official Firmware
+; Forked version of the official firmware for WinterOS
+; *****************************************************
+
 %define STORAGE_DEVICE_LOCATION 0xE0000100
 %define STORAGE_DEVICE_COMMAND 0xE0000100
 %define STORAGE_DEVICE_STATUS 0xE0000108

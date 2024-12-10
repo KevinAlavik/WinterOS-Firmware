@@ -1,3 +1,8 @@
+; *****************************************************
+; WinterOS Official Firmware
+; Forked version of the official firmware for WinterOS
+; *****************************************************
+
 align 8
 
 stack:

@@ -1,3 +1,8 @@
+; *****************************************************
+; WinterOS Official Firmware
+; Forked version of the official firmware for WinterOS
+; *****************************************************
+
 idt_handler_0:
     push 0
     push 0

@@ -1,62 +1,73 @@
+; *****************************************************
+; WinterOS Official Firmware
+; Forked version of the official firmware for WinterOS
+; *****************************************************
+
+; Make sure that we are in the start of the BIOS region.
 org 0xF0000000
 
 entry:
+    ; Set up the stack
     mov sbp, stack
     mov scp, stack
     mov stp, stack_end
+    
+    ; Load the IDT
     call load_idt
-    mov cr0, 1 ; enter protected mode
-    jmp main
+    
+    ; Enter protected mode by setting CR0 register
+    mov cr0, 1
+    jmp main                    ; Jump to main boot process
 
 main:
-    ; initialise the console device
+    ; Initialize the console device
     call Console_Init
     cmp r0, 0
-    jnz .error
+    jnz .error                  ; Jump to error handling if initialization fails
 
-    mov r0, message
-    call Console_Print
-
-    ; initialise the storage device
+    ; Initialize the storage device
     call Storage_Init
     cmp r0, 0
-    jnz .storage_init_error
+    jnz .storage_init_error     ; Jump to storage initialization error if fails
 
-    ; read first 16 sectors to 0x1'0000
-    mov r0, 0
-    mov r1, 16
-    mov r2, 0x10000
+    ; Read the first 16 sectors from the storage device to memory at 0x10000
+    mov r0, 0                   ; Sector 0
+    mov r1, 16                  ; Read 16 sectors
+    mov r2, 0x10000             ; Memory address to store data
     call Storage_Read
     cmp r0, 0
-    jnz .storage_read_error
+    jnz .storage_read_error     ; Jump to storage read error if fails
 
-    ; jump to the bootloader which should be at 0x1'0000
-    mov r0, Console_Print
+    ; Jump to the bootloader code located at 0x10000
+    mov r0, Console_Print       ; Provide pointer to the Console Print function to the bootloader.
     jmp 0x10000
 
 .storage_init_error:
+    ; Error handling for storage initialization failure
     mov r0, storage_init_error_msg
     jmp .print_error
 
 .storage_read_error:
+    ; Error handling for storage read failure
     mov r0, storage_read_error_msg
     jmp .print_error
 
 .print_error:
+    ; Print error message using the console
     call Console_Print
 
-.error: ; if there is no console device, then we can't print anything
+.error: 
+    ; If no console device is available, halt the system
     hlt
 
-message:
-    asciiz "WinterOS firmware loaded.\n"
-
+; Error messages for storage initialization and read errors
 storage_init_error_msg:
     asciiz "Failed to initialise storage device\n"
 
 storage_read_error_msg:
     asciiz "Failed to read from storage device\n"
 
+; Include external assembly files for initialization
 %include "console.asm"
 %include "idt.asm"
 %include "IO.asm"

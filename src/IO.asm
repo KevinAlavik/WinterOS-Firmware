@@ -1,3 +1,8 @@
+; *****************************************************
+; WinterOS Official Firmware
+; Forked version of the official firmware for WinterOS
+; *****************************************************
+
 %define IOBUS_COMMAND 0xFFFFFF00
 %define IOBUS_STATUS 0xFFFFFF08
 %define IOBUS_DATA0 0xFFFFFF10
