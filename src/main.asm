@@ -39,7 +39,7 @@ main:
     jnz .storage_read_error     ; Jump to storage read error if fails
 
     ; Jump to the bootloader code located at 0x10000
-    mov r0, Console_Print       ; Provide pointer to the Console Print function to the bootloader.
+    mov r0, protocol_table     ; Provide pointer to the protocol information table to the bootloader.
     jmp 0x10000
 
 .storage_init_error:
@@ -73,3 +73,4 @@ storage_read_error_msg:
 %include "IO.asm"
 %include "stack.asm"
 %include "storage.asm"
+%include "protocol.asm"
