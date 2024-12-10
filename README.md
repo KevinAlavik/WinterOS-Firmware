@@ -1,6 +1,6 @@
 # WinterOS Firmware (f64-firmware)
 
-> ![NOTE]
+> [!NOTE]
 > This is a fork of the official firmware only designed to work with the WinterOS.
 
 Modified version of the official firmware for the Frost64 specific made for the WinterOS
