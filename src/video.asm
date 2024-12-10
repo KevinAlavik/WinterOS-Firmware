@@ -21,8 +21,16 @@ Video_Init:
     jnz .finish
 
 .finish:
+    ; Display warning on console device.
+    mov r0, video_warning_msg
+    call Console_Print
+
+    ; Return successful result.
     mov r0, 0
     ret
 .error:
     mov r0, 1
     ret
+
+video_warning_msg:
+    asciiz "WARNING: The video device isnt properly handled in the firmware, so it wont work\n"

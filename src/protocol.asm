@@ -12,5 +12,6 @@ WFPT:
     ;  - address =  [WFTP_Base + (0x08 * idx)]
 
     ; -- BEGIN --
-    dq Console_Print    ; ProtocolTable[0] -> Print()
+    dq Console_Print        ; ProtocolTable[0] -> Print()
+    dq Video_Init           ; ProtocolTable[1] -> VideoInit()
     ; -- END --

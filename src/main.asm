@@ -30,11 +30,6 @@ main:
     cmp r0, 0
     jnz .storage_init_error     ; Jump to storage initialization error if fails
 
-    ; Initialize the video device
-    call Video_Init
-    cmp r0, 0
-    jnz .video_init_error       ; Jump to the video initialization error if fails
-
     ; Read the first 16 sectors from the storage device to memory at 0x10000
     mov r0, 0                   ; Sector 0
     mov r1, 16                  ; Read 16 sectors
