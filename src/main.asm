@@ -49,7 +49,7 @@ main:
     hlt
 
 message:
-    asciiz "Hello from the official Frost64 firmware!\n"
+    asciiz "WinterOS firmware loaded.\n"
 
 storage_init_error_msg:
     asciiz "Failed to initialise storage device\n"
